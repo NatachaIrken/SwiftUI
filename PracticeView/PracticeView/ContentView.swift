@@ -7,23 +7,30 @@
 
 import SwiftUI
 
+// vstack = contenedor vertical
+//hstack = contenedor horizontal
+// zstack = contenedor fondo
+
 struct ContentView: View {
     // variables, const deben ir fuera del body. metodos igual
     var nombre = "Press Buttom"
     //implementacion para alerta
     @State private var show = false
     var body: some View {
-        Button(nombre) {
-            //enlace para que se muestre nuestra alerta
-            show = true
-        }.alert(isPresented: $show) {
-            Alert(title: Text("Press OK"))
-
+        VStack{
+            Text("Click below").font(.caption2)
+            Text("open").font(.headline)
+            Button(nombre) {
+                //enlace para que se muestre nuestra alerta
+                show = true
+            }.alert(isPresented: $show) {
+                Alert(title: Text("Press OK"))
+            }
+            .padding()
+            .background(Color.red)
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
-        .padding()
-        .background(Color.red)
-        .foregroundColor(.white)
-        .cornerRadius(10)
     }
 }
 
